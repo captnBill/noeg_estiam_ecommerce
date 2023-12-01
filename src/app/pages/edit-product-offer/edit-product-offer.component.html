@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+
+
+
+    
+  <mat-form-field floatLabel="always">
+    <mat-label>Price</mat-label>
+    <input matInput type="number" placeholder="0" formControlName="price" />
+    <span matTextPrefix>€&nbsp;</span>
+    <mat-error *ngIf="form.get('price')?.hasError('required')">
+      Price is mandatory
+    </mat-error>
+    <mat-error *ngIf="form.get('price')?.hasError('min')">
+      Price must be superior to 0€
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Discount code</mat-label>
+    <input matInput formControlName="discountCode" />
+    <mat-error *ngIf="form.get('discountCode')?.hasError('maxlength')">
+      50 characteres max
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">
+    <mat-icon fontIcon="add"></mat-icon>
+    {{ idProductOffer ? "Edit" : "Add" }} product offer
+  </button>
+</form>

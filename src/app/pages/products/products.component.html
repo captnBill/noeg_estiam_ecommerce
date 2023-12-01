@@ -1,0 +1,60 @@
+<div class="container">
+  <button
+    mat-raised-button
+    *ngIf="isAdmin"
+    color="primary"
+    class="mb-3"
+    routerLink="/create-product"
+  >
+    Add product
+  </button>
+
+  <div class="row">
+    <ng-container *ngFor="let product of productList; let i = index">
+      <div *ngIf="!product.disable" class="col-6">
+        <mat-card class="product-card mb-4">
+          <mat-card-header>
+            <mat-card-title>{{ product.name }}</mat-card-title>
+          </mat-card-header>
+          <img
+            mat-card-image
+            class="product-img"
+            [attr.src]="product.thumbnail"
+          />
+          <mat-card-content>
+            <p>
+              {{ product.description || "No description" }}
+            </p>
+
+            <b>Liste des offres :</b>
+            <ul>
+              <li *ngFor="let productOffer of product.productOfferList">
+                {{ productOffer.seller.groupName }} :
+                {{ productOffer | productPrice }} €
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              *ngIf="isAdmin"
+              mat-raised-button
+              class="me-2"
+              color="accent"
+              [routerLink]="['/edit-product', product.id]"
+            >
+              Edit
+            </button>
+            <button
+              *ngIf="isAdmin"
+              mat-raised-button
+              color="warn"
+              (click)="onClickDeleteProduct(product.id)"
+            >
+              Delete
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

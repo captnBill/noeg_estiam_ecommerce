@@ -1,0 +1,16 @@
+.is-discount {
+  color: red;
+}
+
+.product-card {
+  height: 450px;
+
+  mat-card-content {
+    height: 100%;
+  }
+
+  .product-img {
+    max-height: 250px;
+    object-fit: cover;
+  }
+}

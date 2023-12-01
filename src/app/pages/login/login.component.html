@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="form.get('email')?.hasError('required')">
+      Email is mandatory
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" />
+    <mat-error *ngIf="form.get('password')?.hasError('required')">
+      Password is mandatory
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Connexion</button>
+</form>

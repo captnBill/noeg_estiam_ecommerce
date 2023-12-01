@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+
+  mat-form-field {
+    max-width: 600px;
+  }
+
+  .mdc-button {
+    max-width: 200px;
+  }
+}
